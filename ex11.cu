@@ -10,8 +10,8 @@ __global__ void convolution(int *a, int *b, int *out, int n, int m) {
         for (int k = i; k < n; k += block_size) {
             if (k >= j) out[k - j] += a[k] * b[j];
         }
+        __syncthreads();
     }
-    __syncthreads();
 }
 
 
